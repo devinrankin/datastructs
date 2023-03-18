@@ -20,7 +20,6 @@ typedef struct {
     unsigned int length;
 } arraylist;
 
-
 // functions
 
 /**
@@ -36,5 +35,3 @@ arraylist* create() {
     
     return new_list;
 }
-
-// 01010 >> 1 = 00101
