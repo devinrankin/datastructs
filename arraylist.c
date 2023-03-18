@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// structs
+typedef struct arraylist {
+    void** buffer;
+    unsigned int capacity;
+    unsigned int length;
+} arraylist;
+
 // function prototypes
 arraylist* create();
 void* grow(arraylist* list);
@@ -12,13 +19,6 @@ int size(arraylist* list);
 
 // initial capacity
 #define INITIAL_CAPACITY 5
-
-// structs
-typedef struct {
-    void** buffer;
-    unsigned int capacity;
-    unsigned int length;
-} arraylist;
 
 // functions
 
@@ -35,6 +35,7 @@ arraylist* create() {
     
     return new_list;
 }
+
 /**
  * @brief 
  * Increase the capacity of the arraylist.
@@ -42,8 +43,30 @@ arraylist* create() {
  * @return void* 
  */
 void* grow(arraylist* list) {
-    arr->capacity += (10 >> 1)
-    return realloc(arr->buffer, arr->capacity);
+    list->capacity += (10 >> 1)
+    return realloc(list->buffer, list->capacity);
 }
 
-// 01010 >> 1 = 00101
+/**
+ * @brief 
+ * Adds an element to the end of the arraylist.
+ * @param list the arraylist
+ * @param value the element to be added
+ */
+void add(arraylist* list, void* value) {
+    if(list->length + 1 > list->capacity) {
+        grow(arr);
+        list->length++;
+        list->buffer[list->length] = value;
+    } else {
+        list->length++;
+        list->buffer[list->length] = value;
+    }
+}
+
+int main(void) {
+    arraylist* list = create();
+    add(list, 5);
+    printf("%d\n", list->&(buffer)[0]);
+    return 0;
+}
