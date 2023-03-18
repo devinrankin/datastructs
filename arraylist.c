@@ -11,11 +11,12 @@ typedef struct arraylist {
 // function prototypes
 arraylist* create();
 void* grow(arraylist* list);
-void add(arraylist* list, void* value);
+void add(arraylist* list, void* item);
 int delete(arraylist* list, int index);
-int contains(arraylist* list, int value);
+int contains(arraylist* list, int item);
 int get(arraylist* list, int index);
 int size(arraylist* list);
+void print(arraylist* list);
 
 // initial capacity
 #define INITIAL_CAPACITY 5
@@ -43,7 +44,7 @@ arraylist* create() {
  * @return void* 
  */
 void* grow(arraylist* list) {
-    list->capacity += (10 >> 1)
+    list->capacity += (10 >> 1);
     return realloc(list->buffer, list->capacity);
 }
 
@@ -53,20 +54,12 @@ void* grow(arraylist* list) {
  * @param list the arraylist
  * @param value the element to be added
  */
-void add(arraylist* list, void* value) {
+void add(arraylist* list, void* item) {
     if(list->length + 1 > list->capacity) {
-        grow(arr);
-        list->length++;
-        list->buffer[list->length] = value;
-    } else {
-        list->length++;
-        list->buffer[list->length] = value;
-    }
-}
+        grow(list);
+        list->buffer[list->length++] = item;
 
-int main(void) {
-    arraylist* list = create();
-    add(list, 5);
-    printf("%d\n", list->&(buffer)[0]);
-    return 0;
+    } else {
+        list->buffer[list->length++] = item;
+    }
 }
