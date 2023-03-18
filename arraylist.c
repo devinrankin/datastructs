@@ -35,3 +35,15 @@ arraylist* create() {
     
     return new_list;
 }
+/**
+ * @brief 
+ * Increase the capacity of the arraylist.
+ * @param list the arraylist
+ * @return void* 
+ */
+void* grow(arraylist* list) {
+    arr->capacity += (10 >> 1)
+    return realloc(arr->buffer, arr->capacity);
+}
+
+// 01010 >> 1 = 00101
